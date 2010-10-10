@@ -480,7 +480,7 @@ public class Twitter extends TwitterOAuthSupportBaseImpl
     public IDs getRetweetedByIDs(long statusId, Paging paging) throws TwitterException {
         ensureAuthorizationEnabled();
         return IDsJSONImpl.getBlockIDs(http.get(conf.getRestBaseURL()
-                + "statuses/" + statusId + "/retweeted_by/ids.json",paging.asPostParameterArray(), auth));    
+                + "statuses/" + statusId + "/retweeted_by/ids.json",paging.asPostParameterArray(), auth));
     }
 
     /**
@@ -1386,7 +1386,7 @@ public class Twitter extends TwitterOAuthSupportBaseImpl
      */
     public User createBlock(String screenName) throws TwitterException {
         ensureAuthorizationEnabled();
-        return new UserJSONImpl(http.post(conf.getRestBaseURL() + "blocks/create.json?screen_name=" + screenName, auth));
+        return new UserJSONImpl(http.post(conf.getRestBaseURL() + "blocks/create/" + screenName + ".json", auth));
     }
 
     /**
@@ -1394,7 +1394,7 @@ public class Twitter extends TwitterOAuthSupportBaseImpl
      */
     public User createBlock(int userId) throws TwitterException {
         ensureAuthorizationEnabled();
-        return new UserJSONImpl(http.post(conf.getRestBaseURL() + "blocks/create.json?user_id=" + userId, auth));
+        return new UserJSONImpl(http.post(conf.getRestBaseURL() + "blocks/create/" + userId + ".json", auth));
     }
 
     /**
